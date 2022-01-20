@@ -2,10 +2,12 @@
 import { useState, useMemo } from "react";
 import ReactDOM from "react-dom";
 
+
+
 const App = () => {
   const [count, setCount] = useState(0);
-  const [todos, setTodos] = useState([]); 
-  const calculation = () =>expensiveCalculation(count);
+  const [todos, setTodos] = useState([]);
+  const calculation = expensiveCalculation(count);//
 
   const increment = () => {
     setCount((c) => c + 1);
@@ -17,7 +19,7 @@ const App = () => {
   return (
     <div>
       <div>
-        <h2>Todos Items</h2>
+        <h2>My Todos</h2>
         {todos.map((todo, index) => {
           return <p key={index}>{todo}</p>;
         })}
@@ -35,11 +37,12 @@ const App = () => {
 };
 
 const expensiveCalculation = (num) => {
-  console.log("Doing Expensive Calculation...");
+  console.log(" Expensive Calculating...");
   for (let i = 0; i < 1000000000; i++) {
     num += 1;
   }
   return num;
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+
+ReactDOM.render(<App />, document.getElementById('root'));
