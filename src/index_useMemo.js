@@ -1,13 +1,11 @@
 
 import { useState, useMemo } from "react";
-import ReactDOM from "react-dom";
-
-
+import ReactDOM from "react-dom"; 
 
 const App = () => {
   const [count, setCount] = useState(0);
   const [todos, setTodos] = useState([]);
-  const calculation = expensiveCalculation(count);//
+  const calculation = useMemo(() => { expensiveCalculation(count)},[count])
 
   const increment = () => {
     setCount((c) => c + 1);

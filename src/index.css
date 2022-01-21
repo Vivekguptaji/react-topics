@@ -19,3 +19,42 @@ button {
   height: 40px;
   width: 200px;
 }
+
+.Blue{
+  background-color: #7878f0;
+  color: aliceblue;
+  width: 100px;
+  padding: 10px;
+  margin: 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+
+    font-weight: bold;
+}
+.Red{
+  background-color: red;
+  color: aliceblue;
+  width: 100px;
+  padding: 10px;
+  margin: 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+ul{
+  display: flex;
+    flex-flow: row;
+}
+
+li{
+  padding: 10px;
+  list-style: none;
+}
+h1{
+text-align: center;
+}

@@ -10,6 +10,7 @@ function NoDependencyEffect () {
     }, 1000);
   });
 
+
   return <h1>I've rendered {count} times!</h1>;
 }
 
@@ -52,6 +53,8 @@ function CleanupEffect() {
   return () => clearTimeout(timer)
   }, []);
 
+
+
   return <h1>I've rendered {count} times!</h1>;
 }
-ReactDOM.render(<NoDependencyEffect />, document.getElementById('root'));
+ReactDOM.render(<CleanupEffect />, document.getElementById('root'));
