@@ -1,6 +1,8 @@
 
 import { useState, useMemo, useEffect } from "react";
-import ReactDOM from "react-dom"; 
+import ReactDOM from "react-dom";  
+import axios from 'axios'
+
 
 const useFetch = (url) => {
   const [data, setData] = useState(null);
@@ -9,6 +11,12 @@ const useFetch = (url) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setData(data));
+    axios
+      (url).then(res => {
+      debugger;
+    }).catch(err => { 
+      debugger;
+    })
   }, [url]);
 
   return [data];
