@@ -1,16 +1,17 @@
 import { useState, createContext, useContext } from "react";
 import ReactDOM from "react-dom";
+import Todos from "./Todos";
 
 const UserContext = createContext();
 
 function App() {
   const [user, setUser] = useState("Vivek Gupta");
 
-  return (
+  return ( 
     <UserContext.Provider value={user}>
       <h1>{`Welcome ${user}!`}</h1>
       <Component1 user={user} />
-    </UserContext.Provider>
+    </UserContext.Provider> 
   );
 }
 

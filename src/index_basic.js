@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import HOCApp from './HOCApp';
+import ErrorApp from './ErrorApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ErrorApp />
   </React.StrictMode>,
   document.getElementById('root')
 );

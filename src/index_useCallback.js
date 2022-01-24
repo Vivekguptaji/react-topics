@@ -9,9 +9,9 @@ const App = () => {
   const increment = () => {
     setCount((c) => c + 1);
   };
-  const addTodo = () => {
+  const addTodo = useCallback(() => {
     setTodos((t) => [...t, "New Todo"]);
-  };//
+  },[todos]) ;
 console.log('Index.js render')
   return (
     <>

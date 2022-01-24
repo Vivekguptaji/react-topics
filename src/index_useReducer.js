@@ -24,10 +24,10 @@ const reducer = (state, action) => {
           return todo;
         }
       });
-      console.log('COMPLETE: ',upState)
+      console.log('COMPLETE: ', upState);
       return upState;
     default:
-      console.log('Default: ', state)
+      console.log('Default: ', state);
       return state;
   }
 };
