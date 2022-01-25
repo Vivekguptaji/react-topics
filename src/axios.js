@@ -1,23 +1,30 @@
 import axios from 'axios'
 
+const common_wrong_msg = 'something went wrong, please try after sometime';
+const for_network_msg = 'Please verify your network connection, try after sometime'; 
 
-// Add a request interceptor
-axios.interceptors.request.use(function (config) {
-    // Do something before request is sent
-    debugger;
-    return config;
-  }, function (error) {
-    // Do something with request error
-    return Promise.reject(error);
-  });
 
-// Add a response interceptor
+axios.interceptors.request.use(function (config) { 
+  debugger;
+  config.headers['api_token'] = 'sdsadsadsadsadsad';
+  return config;
+}, function (error) { 
+  debugger;
+  return Promise.reject(error);
+});
+ 
 axios.interceptors.response.use(function (response) {
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    // Do something with response data
     debugger;
     return response;
-  }, function (error) {
+}, function (error) {
+  debugger;
+  console.log('Error from Axios: ', error.message)
+  if (error.response && error.response.status === 404) {
+    error.message = for_network_msg
+  }
+  else { 
+    error.message = common_wrong_msg
+  }
     return Promise.reject(error);
 });
   
