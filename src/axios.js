@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 
-
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
@@ -19,8 +18,6 @@ axios.interceptors.response.use(function (response) {
     debugger;
     return response;
   }, function (error) {
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // Do something with response error
     return Promise.reject(error);
 });
   

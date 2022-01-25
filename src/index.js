@@ -8,9 +8,9 @@ const useFetch = (url) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => setData(data));
     axios
       (url).then(res => {
       debugger;

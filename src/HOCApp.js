@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Hoc from './HOC'; 
 class HOCApp extends Component {
     render() {
-        let props = this.props;
-        debugger;
+        console.log('HOCApp', this.props); 
         return (
             <div>
                 <h2>Hello World!!</h2>
@@ -12,5 +11,5 @@ class HOCApp extends Component {
         )
     }
 }
-HOCApp = Hoc(HOCApp);  
+// HOCApp = Hoc(HOCApp);  
 export default HOCApp;
