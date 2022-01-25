@@ -11,5 +11,5 @@ class HOCApp extends Component {
         )
     }
 }
-// HOCApp = Hoc(HOCApp);  
-export default HOCApp;
+//HOCApp = Hoc(HOCApp);  
+export default Hoc(HOCApp);
