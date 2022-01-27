@@ -1,49 +1,32 @@
+import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "../src/routerComp/Layout";
+import Home from "../src/routerComp/Home";
+//import Blogs from "../src/routerComp/Blogs";
+import Contact from "../src/routerComp/Contact";
+import NoPage from "../src/routerComp/NoPage";
+import './index.css' 
+import React, { Suspense } from "react";
 
-import { useState, useMemo, useEffect } from "react";
-import ReactDOM from "react-dom";  
-import axios from './axios'
-import ErrorApp from "./ErrorApp";
+const Blogs = React.lazy(() => import('../src/routerComp/Blogs'));
+const OnceMore = React.lazy(()=> import('../src/routerComp/OneMore'))
 
-
-const useFetch = (url) => {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    console.log('Now URL is: ', url);
-    // fetch(url)
-    //   .then((res) => res.json())
-    //   .then((data) => setData(data));
-    axios(url).then(res => {
-      debugger;
-      setData(res.data);
-    }).catch(err => { 
-      debugger;
-      console.log('Error from AppJS: ', err.message)
-    })
-  }, [url]);
-
-  return [data];
-};
-
-const Home = () => {
-
-  const [url, setUrl] = useState('https://jsonplaceholder.typicode.com/todos')
-  const [data] = useFetch(url);
-
-  const updateUrl = () => {
-    console.log('BUTTON CLICKED')
-    setUrl('https://jsonplaceholder.typicode.com/users');
-  }
-  
+export default function App() {
   return (
-    <>
-      <button onClick={updateUrl}>Change URL</button>
-      {data &&
-        data.map((item) => {
-          return <p key={item.id ? item.id : item.userId}>{item.title ? item.title : item.username}</p>;
-        })}
-    </>
+    <BrowserRouter>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="blogs" element={<Blogs />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="next" element={< OnceMore />} />
+            <Route path="*" element={<NoPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   );
-};
+}
 
-ReactDOM.render(<ErrorApp />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
