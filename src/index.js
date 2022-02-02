@@ -1,32 +1,71 @@
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "../src/routerComp/Layout";
-import Home from "../src/routerComp/Home";
-//import Blogs from "../src/routerComp/Blogs";
-import Contact from "../src/routerComp/Contact";
-import NoPage from "../src/routerComp/NoPage";
-import './index.css' 
-import React, { Suspense } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"; 
+import './index.css';
 
-const Blogs = React.lazy(() => import('../src/routerComp/Blogs'));
-const OnceMore = React.lazy(()=> import('../src/routerComp/OneMore'))
-
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="blogs" element={<Blogs />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="next" element={< OnceMore />} />
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
-  );
+const Example = () => {
+    const [startDate, setStartDate] = useState(new Date());
+    const [showCalendar, setShowCalendar] = useState(false);
+    console.log('startDate', startDate)
+    return (
+        <>
+            <form className="newUserForm">
+                <div className="newUserItem">
+                    <label className="required">Full Name</label>
+                    <input
+                        type="text"
+                        placeholder="John Smith"
+                        required
+                    />
+                </div>
+                <div className="newUserItem" >
+                <button onClick={() => { setShowCalendar(!showCalendar) }}>Show Calendar</button>
+                    {showCalendar && <DatePicker selected={startDate}
+                        className="text-center"
+                        showMonthDropdown
+                        showYearDropdown
+                        dropdownMode="select" 
+                        onChange={(date) => { setShowCalendar(!showCalendar); setStartDate(date) }} inline />}
+                </div>
+                <div className="newUserItem">
+                    <label className="required">Location</label>
+                    <input
+                        type="text"
+                        placeholder="Location"
+                        required
+                    />
+                </div>
+                <div className="newUserItem">
+                    <label className="required">State</label>
+                    <input
+                        type="text"
+                        placeholder="State"
+                        required
+                    />
+                </div>
+                <div className="newUserItem">
+                    <label className="required">City</label>
+                    <input
+                        type="text"
+                        placeholder="City"
+                        required
+                    />
+                </div>
+                <div className="newUserItem">
+                    <label className="required">Phone Number</label>
+                    <input
+                        type="text"
+                        placeholder="Phone Number"
+                        required
+                    />
+                </div>
+            </form>
+         
+          
+        </>
+        
+    )
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<Example />, document.getElementById("root"));
